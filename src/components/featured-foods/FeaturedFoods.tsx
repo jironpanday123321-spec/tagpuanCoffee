@@ -78,14 +78,14 @@ function FoodCard({ food }: { food: FoodItem }) {
       </div>
 
       {/* Card body */}
-      <div className="w-full h-[200px] sm:h-[215px] bg-[#F5F5F7] rounded-3xl flex flex-col items-center justify-end pb-6 pt-24 px-4 text-center shadow-sm border border-neutral-200/80 transition-all duration-300 group-hover:shadow-xl group-hover:border-amber-300 group-hover:bg-amber-50/40 relative z-10">
+      <div className="w-full h-[260px] sm:h-[280px] bg-[#F5F5F7] rounded-3xl flex flex-col items-center justify-end pb-6 pt-36 sm:pt-40 px-4 text-center shadow-sm border border-neutral-200/80 transition-all duration-300 group-hover:shadow-xl group-hover:border-amber-300 group-hover:bg-amber-50/40 relative z-10">
         <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100/90 px-2.5 py-0.5 rounded-full mb-2">
           {food.tag}
         </span>
         <h3 className="text-base sm:text-lg font-black text-[#1A1A1A] font-['Montserrat',sans-serif] tracking-tight group-hover:text-amber-900 transition-colors leading-tight mb-1">
           {food.name}
         </h3>
-        <p className="text-xs text-neutral-500 line-clamp-2 leading-snug px-1 font-medium">
+        <p className="text-xs text-neutral-600 leading-snug px-1 font-medium z-20">
           {food.description}
         </p>
         <span className="mt-2 text-sm font-extrabold text-[#0d3427]">
