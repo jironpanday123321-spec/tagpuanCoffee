@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import drinkImg from "@/assets/drinkonly-removebg-preview.webp";
+import sizzlingImg from "@/assets/sizzling-plate.webp";
 
-interface DrinkItem {
+interface FoodItem {
   id: number;
   name: string;
   tag: string;
@@ -10,66 +10,44 @@ interface DrinkItem {
   price: string;
 }
 
-const drinksData: DrinkItem[] = [
+const foodsData: FoodItem[] = [
   {
     id: 1,
-    name: "Caramel Macchiato",
+    name: "Classic Tapsilog",
     tag: "Signature",
-    description: "Rich espresso layered with vanilla & caramel drizzle",
-    price: "₱140",
+    description: "Premium marinated beef tapa served with garlic rice & fried egg",
+    price: "₱169",
   },
   {
     id: 2,
-    name: "Iced Spanish Latte",
-    tag: "Best Seller",
-    description: "Espresso with sweet condensed milk & fresh milk",
-    price: "₱145",
+    name: "Sizzling Pork Sisig",
+    tag: "Local Favorite",
+    description: "Savory minced pork with red onions & spices on a hot iron plate",
+    price: "₱229",
   },
   {
     id: 3,
-    name: "Matcha Frappe",
-    tag: "Popular",
-    description: "Premium Japanese matcha blended to creamy perfection",
-    price: "₱155",
+    name: "Pork Sinigang in Hotpot",
+    tag: "Best Seller",
+    description: "Tamarind-soured pork ribs soup with kangkong, radish & green chili",
+    price: "₱390",
   },
   {
     id: 4,
-    name: "Dark Mocha",
-    tag: "House Blend",
-    description: "Espresso combined with rich dark chocolate cocoa",
-    price: "₱150",
+    name: "Classic Carbonara",
+    tag: "Cooked to Order",
+    description: "Rich and creamy pasta with crispy bacon, parmesan & garlic toast",
+    price: "₱269",
   },
   {
     id: 5,
-    name: "Salted Caramel",
+    name: "Crispy Pata",
     tag: "Specialty",
-    description: "Savory salted caramel espresso over cold ice",
-    price: "₱150",
-  },
-  {
-    id: 6,
-    name: "Hazelnut Cold Brew",
-    tag: "Slow Steeped",
-    description: "12-hour cold brew infused with roasted hazelnut",
-    price: "₱135",
-  },
-  {
-    id: 7,
-    name: "Vanilla Cold Foam",
-    tag: "Classic",
-    description: "Smooth cold brew topped with sweet vanilla foam",
-    price: "₱140",
-  },
-  {
-    id: 8,
-    name: "Sea Salt Latte",
-    tag: "Trending",
-    description: "Espresso topped with creamy sea salt froth",
-    price: "₱150",
-  },
+    description: "Deep fried pork leg with crunchy exterior & tender inside",
+    price: "₱799",
+  }
 ];
 
-/** How many cards are visible at once depending on the viewport */
 function useVisibleCount() {
   const getCount = () => {
     if (typeof window === "undefined") return 3;
@@ -86,41 +64,41 @@ function useVisibleCount() {
   return count;
 }
 
-function DrinkCard({ drink }: { drink: DrinkItem }) {
+function FoodCard({ food }: { food: FoodItem }) {
   return (
     <div className="group relative flex flex-col items-center justify-end pt-28 cursor-pointer transition-transform duration-300 hover:-translate-y-2 w-full">
-      {/* Floating drink image above card */}
-      <div className="absolute top-[30px] sm:top-[38px] z-20 w-[150px] sm:w-[170px] h-[170px] sm:h-[190px] flex items-center justify-center pointer-events-none transition-transform duration-300 group-hover:scale-105">
+      {/* Floating food image above card */}
+      <div className="absolute -top-[5px] sm:-top-[25px] z-20 w-[215px] sm:w-[260px] h-[215px] sm:h-[260px] flex items-center justify-center pointer-events-none transition-transform duration-300 group-hover:scale-105">
         <img
-          src={drinkImg}
-          alt={drink.name}
+          src={sizzlingImg}
+          alt={food.name}
           className="w-full h-full object-contain drop-shadow-2xl"
           draggable={false}
         />
       </div>
 
       {/* Card body */}
-      <div className="w-full h-[200px] sm:h-[215px] bg-[#F5F5F7] rounded-3xl flex flex-col items-center justify-end pb-6 pt-28 px-4 text-center shadow-sm border border-neutral-200/80 transition-all duration-300 group-hover:shadow-xl group-hover:border-amber-300 group-hover:bg-amber-50/40 relative z-10">
+      <div className="w-full h-[200px] sm:h-[215px] bg-[#F5F5F7] rounded-3xl flex flex-col items-center justify-end pb-6 pt-24 px-4 text-center shadow-sm border border-neutral-200/80 transition-all duration-300 group-hover:shadow-xl group-hover:border-amber-300 group-hover:bg-amber-50/40 relative z-10">
         <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100/90 px-2.5 py-0.5 rounded-full mb-2">
-          {drink.tag}
+          {food.tag}
         </span>
         <h3 className="text-base sm:text-lg font-black text-[#1A1A1A] font-['Montserrat',sans-serif] tracking-tight group-hover:text-amber-900 transition-colors leading-tight mb-1">
-          {drink.name}
+          {food.name}
         </h3>
-        <p className="text-xs text-neutral-500 line-clamp-2 font-medium leading-snug px-1">
-          {drink.description}
+        <p className="text-xs text-neutral-500 line-clamp-2 leading-snug px-1 font-medium">
+          {food.description}
         </p>
         <span className="mt-2 text-sm font-extrabold text-[#0d3427]">
-          {drink.price}
+          {food.price}
         </span>
       </div>
     </div>
   );
 }
 
-export function FeaturedDrinks() {
+export function FeaturedFoods() {
   const visibleCount = useVisibleCount();
-  const total = drinksData.length;
+  const total = foodsData.length;
   const maxIndex = total - visibleCount;
 
   const [index, setIndex] = useState(0);
@@ -159,12 +137,11 @@ export function FeaturedDrinks() {
 
   return (
     <section
-      id="drinks"
-      className="w-full bg-white py-14 sm:py-20 md:py-28 px-4 sm:px-6 overflow-hidden select-none"
-      aria-label="Featured Drinks Showcase"
+      id="featured-foods"
+      className="w-full bg-white pb-14 sm:pb-20 md:pb-28 px-4 sm:px-6 overflow-hidden select-none"
+      aria-label="Featured Foods Showcase"
     >
       <div className="w-full max-w-[1200px] mx-auto flex flex-col items-center">
-
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -174,18 +151,17 @@ export function FeaturedDrinks() {
           className="text-center mb-14 sm:mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1A1A1A] leading-tight font-['Montserrat',sans-serif]">
-            Featured Drinks
+            Featured Foods
           </h2>
           <p className="text-sm sm:text-base text-neutral-500 max-w-md mx-auto mt-2 font-medium">
-            Explore our signature coffee creations.
+            Explore our signature food specialties.
           </p>
         </motion.div>
 
         {/* Carousel */}
         <div className="relative w-full">
-
           {/* Slides */}
-          <div className="overflow-hidden pt-10 pb-4">
+          <div className="overflow-hidden pt-4 pb-4">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={index}
@@ -200,8 +176,8 @@ export function FeaturedDrinks() {
                   gridTemplateColumns: `repeat(${visibleCount}, 1fr)`,
                 }}
               >
-                {drinksData.slice(index, index + visibleCount).map((drink) => (
-                  <DrinkCard key={drink.id} drink={drink} />
+                {foodsData.slice(index, index + visibleCount).map((food) => (
+                  <FoodCard key={food.id} food={food} />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -211,8 +187,8 @@ export function FeaturedDrinks() {
           <button
             onClick={() => go(-1)}
             disabled={index === 0}
-            aria-label="Previous drinks"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 z-30 w-10 h-10 rounded-full bg-white border border-neutral-200 shadow-md flex items-center justify-center text-[#0d3427] hover:bg-[#0d3427] hover:text-white hover:border-[#0d3427] transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none"
+            aria-label="Previous foods"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 z-30 w-10 h-10 rounded-full bg-white border border-[#c8a97e]/30 shadow-md flex items-center justify-center text-[#0d3427] hover:bg-[#0d3427] hover:text-white hover:border-[#0d3427] transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -223,8 +199,8 @@ export function FeaturedDrinks() {
           <button
             onClick={() => go(1)}
             disabled={index >= maxIndex}
-            aria-label="Next drinks"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 z-30 w-10 h-10 rounded-full bg-white border border-neutral-200 shadow-md flex items-center justify-center text-[#0d3427] hover:bg-[#0d3427] hover:text-white hover:border-[#0d3427] transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none"
+            aria-label="Next foods"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 z-30 w-10 h-10 rounded-full bg-white border border-[#c8a97e]/30 shadow-md flex items-center justify-center text-[#0d3427] hover:bg-[#0d3427] hover:text-white hover:border-[#0d3427] transition-all duration-200 disabled:opacity-30 disabled:pointer-events-none"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
@@ -239,15 +215,13 @@ export function FeaturedDrinks() {
               key={i}
               onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === index
+              className={`h-2 rounded-full transition-all duration-300 ${i === index
                   ? "w-6 bg-[#0d3427]"
                   : "w-2 bg-neutral-300 hover:bg-neutral-400"
-              }`}
+                }`}
             />
           ))}
         </div>
-
       </div>
     </section>
   );

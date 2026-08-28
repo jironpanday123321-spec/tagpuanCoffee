@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoImg from "@/assets/El dorado_20251103_111141_0000.png";
+import logoImg from "@/assets/El dorado_20251103_111141_0000.webp";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,13 +29,13 @@ export function Navbar() {
           {/* Center-left Nav Links */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-200">
             <a href="#menu" className="hover:text-[#c8a97e] transition-colors">
-              Menu
+              Food Menu
             </a>
             <a href="#drinks" className="hover:text-[#c8a97e] transition-colors">
-              drinks
+              Drinks Menu
             </a>
             <a href="#location" className="hover:text-[#c8a97e] transition-colors">
-              location
+              Location
             </a>
           </nav>
         </div>
@@ -80,21 +80,21 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-200 hover:text-[#c8a97e] transition-colors"
             >
-              Menu
+              Food Menu
             </a>
             <a
               href="#drinks"
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-200 hover:text-[#c8a97e] transition-colors"
             >
-              drinks
+              Drinks Menu
             </a>
             <a
               href="#location"
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-200 hover:text-[#c8a97e] transition-colors"
             >
-              location
+              Location
             </a>
             <a
               href="#contact"

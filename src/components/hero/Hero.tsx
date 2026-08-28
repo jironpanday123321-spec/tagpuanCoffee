@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import coffeeBanner from "@/assets/coffee-banner.jpg";
+import coffeeBanner from "@/assets/coffee-banner.webp";
 import matchaBanner from "@/assets/matchaBanner.jpg";
-import coffeeBanner2 from "@/assets/coffee-banner2.jpg";
+import coffeeBanner2 from "@/assets/coffee-banner2.webp";
 
 export function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -114,10 +114,10 @@ export function Hero() {
 
               {/* CTA */}
               <a
-                href="#drinks"
+                href="#menu"
                 className={`inline-flex items-center gap-2 mt-3 text-xs sm:text-sm font-bold uppercase tracking-widest transition-colors duration-500 group ${currentSlide.ctaClass}`}
               >
-                <span>Order Yours Now</span>
+                <span>Learn more about the FOOD</span>
                 <svg
                   className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"
